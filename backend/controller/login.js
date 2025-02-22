@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const SECRET_KEY = "mysecretkey";
 
- exports.login = async (req, res) => {
+exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -33,6 +33,7 @@ const SECRET_KEY = "mysecretkey";
       success: true,
       message: "Connexion réussie",
       token,
+      vendeurId: user._id, // ✅ إرسال `vendeurId`
       role: user.role,
       redirectUrl, 
     });

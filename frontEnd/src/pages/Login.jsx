@@ -12,23 +12,25 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
 
-    try {
-      const response = await axios.post("http://localhost:5000/auth/login", formData);
-      const { success, token, redirectUrl } = response.data;
+  try {
+    const response = await axios.post("http://localhost:5000/auth/login", formData);
+    const { success, token, redirectUrl, vendeurId } = response.data; // ✅ إضافة `vendeurId`
 
-      if (success) {
-        localStorage.setItem("token", token); 
-        alert("Connexion réussie !");
-        navigate(redirectUrl); 
-      }
-    } catch (error) {
-      setError("Email ou mot de passe incorrect !");
+    if (success) {
+      localStorage.setItem("token", token); 
+      localStorage.setItem("vendeurId", vendeurId); // ✅ حفظ `vendeurId`
+      alert("Connexion réussie !");
+      navigate(redirectUrl); 
     }
-  };
+  } catch (error) {
+    setError("Email ou mot de passe incorrect !");
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center">

@@ -3,6 +3,8 @@ const Product = require("../models/product");
 // 📌 **Obtenir tous les produits**
 exports.getProducts = async (req, res) => {
   try {
+
+
     const products = await Product.find();
     res.json(products);
   } catch (error) {
@@ -25,6 +27,7 @@ exports.getProductsByVendeur = async (req, res) => {
 // 📌 **Ajouter un produit**
 exports.addProduct = async (req, res) => {
   try {
+      console.log("Données reçues :", req.body);
     const { name, price, vendeurId } = req.body;
     const image = req.file ? req.file.filename : null;
 

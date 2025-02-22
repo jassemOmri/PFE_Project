@@ -24,13 +24,25 @@ const VendeurDashboard = () => {
   };
 
   const addProduct = async (e) => {
+
     e.preventDefault();
+
+
+     const vendeurId = localStorage.getItem("vendeurId"); // ✅ نجيبو `vendeurId` متاع `vendeur` المسجل
+  console.log("vendeurId envoyé :", vendeurId); // ✅ نشوفو `vendeurId` في `console`
+
+  if (!vendeurId) {
+    alert("Erreur : vendeurId غير موجود !");
+    return;
+  }
     
     const formData = new FormData();
     formData.append("name", newProduct.name);
     formData.append("price", newProduct.price);
     formData.append("image", newProduct.image);
     formData.append("vendeurId", vendeurId); // ✅ Associer le produit au vendeur
+
+
 
     try {
       const response = await axios.post("http://localhost:5000/api/products", formData, {
