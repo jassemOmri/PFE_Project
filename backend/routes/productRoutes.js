@@ -13,6 +13,16 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+router.get("/products/:id", async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (!product) return res.status(404).json({ success: false, message: "Produit introuvable" });
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Erreur serveur" });
+  }
+});
+
 // 📌 **Routes des produits**
 router.get("/products", getProducts); // ✅ Récupérer tous les produits
 router.get("/products/vendeur/:vendeurId", getProductsByVendeur); // ✅ Récupérer les produits d'un vendeur spécifique

@@ -4,19 +4,16 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
  import Product from "./pages/Product";
 import Contact from "./pages/Contact";
-import Navbar from './comoponents/Navbar';
 import SignUp from './pages/SignUp';
-
 import Login from "./pages/Login";
 import LivreurDashboard from "./comoponents/LivreurDashboard";
 import AcheteurDashboard from "./comoponents/AcheteurDashboard";
 import VendeurDashboard from "./comoponents/VendeurDashboard";
+import ProductDetails from "./comoponents/ProductDetails";
 
 const App = () => {
   return (
-    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'> 
-      
-            <Navbar />
+    <div className=''> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
@@ -30,6 +27,8 @@ const App = () => {
         <Route path="/livreur-dashboard" element={<LivreurDashboard />} />
         <Route path="/acheteur-dashboard" element={<AcheteurDashboard />} />
         <Route path="/vendeur-dashboard" element={<VendeurDashboard />} />
+
+         <Route path="/product/:id" element={<ProductDetails />} /> {/* ✅ صفحة تفاصيل المنتج */}
       </Routes>
     </div>
   )
