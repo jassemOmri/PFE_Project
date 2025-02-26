@@ -7,7 +7,6 @@ import CompNavbar from "../comoponents/CompNavbar";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [role, setRole] = useState(""); // ✅ تخزين `role` في `useState`
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +21,7 @@ const Home = () => {
       setRole(userRole); // ✅ تحديث `role`
     }
   }, []);
- 
+
   const addToCart = async (product) => {
     const acheteurId = localStorage.getItem("acheteurId");
 

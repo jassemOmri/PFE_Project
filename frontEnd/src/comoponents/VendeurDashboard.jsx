@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import UserNavbar from "./UserNavbar";
 
 const VendeurDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -84,6 +85,7 @@ const VendeurDashboard = () => {
   };
 
   return (
+    <div><UserNavbar/>
     <div className="container mx-auto p-6 min-h-screen">
       <h2 className="text-2xl font-extrabold text-green-600 mb-6 text-center">Tableau de Bord Vendeur</h2>
 
@@ -196,7 +198,7 @@ const VendeurDashboard = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </div></div>
   );
 };
 

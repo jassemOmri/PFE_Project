@@ -39,7 +39,6 @@ const CompNavbar = () => {
 
       <div className="min-h-screen flex flex-col justify-between">
         <div className="container mx-auto p-8 flex-1">
-          <h2 className="text-2xl font-bold mb-6 text-center">Produits Disponibles</h2>
 
           {/* ✅ إذا لم يتم العثور على نتائج */}
           {filteredProducts.length === 0 ? (
@@ -60,6 +59,7 @@ const CompNavbar = () => {
                     />
                     <h4 className="text-lg font-semibold mb-1">{product.name}</h4>
                     <p className="text-gray-600 mb-2">${product.price}</p>
+
                   </div>
                 </div>
               ))}

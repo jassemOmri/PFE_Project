@@ -19,12 +19,14 @@ const handleSubmit = async (e) => {
   setError("");
 
   try {
-    const response = await axios.post("http://localhost:5000/auth/login", formData);
-    const { success, token, role, redirectUrl } = response.data;
+     const response = await axios.post("http://localhost:5000/auth/login", formData);
+    const { success, token, role, userName, redirectUrl } = response.data;
 
     if (success) {
       localStorage.setItem("token", token); 
       localStorage.setItem("role", role);  // ✅ تحديث `role` مباشرة بعد تسجيل الدخول
+            localStorage.setItem("userName", userName); // ✅ تخزين اسم المستخدم
+
       window.dispatchEvent(new Event("storage")); // ✅ إعلام `Home.jsx` بأن `role` قد تغير
       alert("Connexion réussie !");
       navigate(redirectUrl);

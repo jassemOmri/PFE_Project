@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
     if (user.role === "livreur") {
       redirectUrl = "/livreur-dashboard";
     } else if (user.role === "acheteur") {
-      redirectUrl = "/";
+      
     } else if (user.role === "vendeur") {
       redirectUrl = "/vendeur-dashboard";
     }
@@ -34,6 +34,7 @@ exports.login = async (req, res) => {
       message: "Connexion réussie",
       token,
       vendeurId: user._id, //  إرسال `vendeurId`
+       userName: user.name,
       role: user.role,
       redirectUrl, 
     });
